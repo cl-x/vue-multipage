@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-03 16:20:37
+ * @LastEditTime : 2024-04-03 17:53:59
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/vite.config.ts
  */
@@ -15,11 +15,9 @@ import Components from 'unplugin-vue-components/vite' //组件自动按需引入
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import autoImport from 'unplugin-auto-import/vite'
 import { visualizer } from 'rollup-plugin-visualizer' //打包size分析工具
-import compression from 'vite-plugin-compression'
-import mpaPlugin from 'vite-plugin-mpa-plus' //gzip/br 压缩
+import compression from 'vite-plugin-compression' //gzip/br 压缩
 import path from 'path'
 import chalk from 'chalk'
-import fs from 'fs'
 
 
 // 引入多页面配置文件
@@ -33,64 +31,18 @@ const errorLog = (error) => console.log(chalk.red(`${error}`))
 
 //获取指定的单页面入口
 const getEnterPages = () => {
-  if (!NPM_CONFIG_PAGE)
-    errorLog(
-      '--------------请在命令行后以 `--page=页面名称` 格式指定页面名称！---------------'
-    )
-  const filterArr = pages.filter(
-    (item) => item.chunk.toLowerCase() == NPM_CONFIG_PAGE.toLowerCase()
-  )
-  if (!filterArr.length)
-    errorLog(
-      '-----------------------不存在此页面，请检查页面名称！-------------------------'
-    )
-
-  return {
-    [NPM_CONFIG_PAGE]: path.resolve(
-      __dirname,
-      `src/pages/${NPM_CONFIG_PAGE}/index.html`
-    )
+  const input_page = {
+    index: path.resolve(__dirname, 'pages/index.html')  //默认入口
   }
+  pages.forEach((item) => {
+    input_page[item.chunk] = path.resolve(
+      __dirname,
+      `pages/${item.chunk}.html`
+    )
+  })
+
+  return input_page
 }
-
-console.log('NPM_CONFIG_PAGE', getEnterPages())
-
-/**
- * @Description: 重定向配置,修复页面刷新导致的问题
- * @return {*}
- */
-const getPageConfig: any = ()=>{
-  const rewrites: any = []
-  const page_config: any = []
-
-  const data = fs.readFileSync(path.resolve('./scripts', 'multiPages.json'),'utf-8')
-
-  const value = JSON.parse(data)
-
-  value.forEach((item) => {
-    const data_config = {
-      entry: path.resolve(__dirname, `./src/pages/${item.chunk}/main.ts`),
-      filename: path.resolve(__dirname, `./src/pages/${item.chunk}/index.html`),
-      template: path.resolve(__dirname, `./src/pages/${item.chunk}/index.html`),
-      inject: {
-        data: {
-          title: item.chunk
-        }
-      }
-    }
-
-    const data_rewrites = {
-      from: new RegExp(`/${item.chunk}`),
-      to: `/${item.chunk}/index.html`
-    }
-
-    page_config.push(data_config)
-    rewrites.push(data_rewrites)
-  });
-
-  return { rewrites, page_config }
-}
-
 
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   let env = {} as any
@@ -104,16 +56,11 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 
   return {
     // root: path.resolve(__dirname, `./src/pages/${NPM_CONFIG_PAGE}`),
-    root: path.resolve(__dirname, `./src/pages`),
-    base: '/',
+    root: path.resolve(__dirname, `./pages`),
+    // base: '/',
+    base: 'https://web3.realtech-inc.com/silk/vue-test-two/',
     envDir: path.resolve(__dirname), //用于加载 .env 文件的目录。可以是一个绝对路径，也可以是相对于项目根的路径。
     plugins: [
-      mpaPlugin({
-        pages: getPageConfig().page_config,
-        historyApiFallback: {
-          rewrites: getPageConfig().rewrites
-        }
-      }),
       vue(),
       vueJsx(),
       Components({
@@ -147,8 +94,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     ],
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)),
-        '@pages': fileURLToPath(new URL('./src/pages', import.meta.url))
+        '@': fileURLToPath(new URL('./', import.meta.url)),
+        // '@pages': fileURLToPath(new URL('./src/pages', import.meta.url))
       }
     },
     build: {

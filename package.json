@@ -28,7 +28,6 @@
     "postcss-px-to-viewport": "^1.1.1",
     "reset-css": "^5.0.2",
     "vant": "^4.8.7",
-    "vite-plugin-mpa-plus": "^0.5.4",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "web-storage-cache": "^1.1.1"

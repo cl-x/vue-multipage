@@ -2,9 +2,9 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-03 16:08:07
+ * @LastEditTime : 2024-04-03 17:55:30
  * @Description  : 头部注释配置模板
- * @FilePath     : /vue-multipage/src/pages/App.vue
+ * @FilePath     : /vue-multipage/pages/index/App.vue
 -->
 <script setup lang="ts">
 import { ref } from "vue";
