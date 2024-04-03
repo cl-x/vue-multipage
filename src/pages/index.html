@@ -1,46 +1,21 @@
 <!--
  * @Author       : 桔子
- * @Date         : 2024-03-25 18:36:32
+ * @Date         : 2024-03-26 17:51:24
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-02 14:54:16
+ * @LastEditTime : 2024-04-03 14:20:35
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/src/pages/index.html
 -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>初始化页面路由</title>
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
   </head>
   <body>
     <div id="app"></div>
-
-    <script type="module">
-      const getAllPages = async () => {
-        let result = await fetch('pagesData.json').then(response => response.json());
-        result = Array.isArray(result) ? result : [];
-        createElementNode(result)
-      }
-
-      const createElementNode = (list) => {
-        const app = document.getElementById('app');
-        list.forEach((item) => {
-          const a = document.createElement('a');
-          const p = document.createElement('p');
-          a.href = `${item.chunk}/index.html`;
-          a.innerHTML = `${item.chunkName}页面`
-          p.appendChild(a);
-          app.appendChild(p);
-        });
-      }
-
-      const init = async () => {
-        console.log('初始化页面路由', window.location.href)
-
-        await getAllPages()
-      }
-
-      init()
-    </script>
+    <script type="module" src="./main.ts"></script>
   </body>
 </html>

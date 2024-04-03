@@ -2,45 +2,36 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-03-27 14:50:48
+ * @LastEditTime : 2024-04-03 16:07:55
  * @Description  : 头部注释配置模板
- * @FilePath     : /vue-more/src/pages/pageOne/router/index.ts
+ * @FilePath     : /vue-multipage/src/pages/pageOne/router/index.ts
  */
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
+import * as VueRouter from "vue-router";
 
 const router = createRouter({
-  history: createWebHistory((import.meta as any).env.BASE_URL),
+  history: VueRouter.createWebHashHistory("/pageOne/index.html"),
   routes: [
     {
-      path: '/',
-      redirect: '/pageOne'
+      path: "/",
+      redirect: "/enter",
     },
     {
-      path: '/pageOne/index.html',
-      redirect: '/pageOne'
+      path: "/enter",
+      name: "Enter",
+      component: () => import("../views/enter/index.vue"),
     },
     {
-      path: '/pageOne',
-      redirect: '/pageOne/enter',
-      children: [
-        {
-          path: 'enter',
-          name: 'Enter',
-          component: () => import('../views/enter/index.vue')
-        },
-        {
-          path: 'home',
-          name: 'Home',
-          component: () => import('../views/home/index.vue')
-        },
-        {
-          path: 'empty',
-          name: 'Empty',
-          component: () => import('../views/empty/index.vue')
-        }
-      ]
-    }
-  ]
-})
+      path: "/home",
+      name: "Home",
+      component: () => import("../views/home/index.vue"),
+    },
+    {
+      path: "/empty",
+      name: "Empty",
+      component: () => import("../views/empty/index.vue"),
+    },
+  ],
+});
 
-export default router
+export default router;

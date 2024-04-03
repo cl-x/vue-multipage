@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-02 16:14:20
+ * @LastEditTime : 2024-04-03 16:20:37
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/vite.config.ts
  */
@@ -103,7 +103,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   }
 
   return {
-    root: path.resolve(__dirname, `./src/pages/${NPM_CONFIG_PAGE}`),
+    // root: path.resolve(__dirname, `./src/pages/${NPM_CONFIG_PAGE}`),
+    root: path.resolve(__dirname, `./src/pages`),
     base: '/',
     envDir: path.resolve(__dirname), //用于加载 .env 文件的目录。可以是一个绝对路径，也可以是相对于项目根的路径。
     plugins: [
@@ -146,10 +147,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     ],
     resolve: {
       alias: {
-        // '@': fileURLToPath(new URL('./src', import.meta.url)),
-        // '@pages': fileURLToPath(new URL('./src/pages', import.meta.url))
-        '@': path.resolve(__dirname, './src'),
-        '@pages': path.resolve(__dirname, './src/pages')
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+        '@pages': fileURLToPath(new URL('./src/pages', import.meta.url))
       }
     },
     build: {

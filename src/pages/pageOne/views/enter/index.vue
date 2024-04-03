@@ -2,13 +2,15 @@
  * @Author       : 桔子
  * @Date         : 2024-03-27 10:51:42
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-02 16:31:53
+ * @LastEditTime : 2024-04-03 16:23:39
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/src/pages/pageOne/views/enter/index.vue
 -->
 <script setup>
 import { useRouter } from 'vue-router'
 import { useCommonModulesStore } from '@/stores/modules/common'
+import { JumpType } from "@/const/index";
+import { goPageJumps } from "@/utils/goPageJumps";
 
 const commonStore = useCommonModulesStore()
 
@@ -16,12 +18,10 @@ const { push } = useRouter()
 
 const go = () => {
   push({ name: 'Home' })
-  console.log('go')
 }
 
 const goTwo = () => {
-  window.location.href = 'http://localhost:9528/pageTwo/index.html?path=empty'
-  console.log('goTwo')
+  goPageJumps(JumpType.PAGETWO_HOME)
 }
 
 onMounted(() => {

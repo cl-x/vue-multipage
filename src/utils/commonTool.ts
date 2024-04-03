@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-27 17:52:39
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-03-27 18:59:54
+ * @LastEditTime : 2024-04-03 16:15:02
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/src/utils/commonTool.ts
  */
@@ -25,16 +25,4 @@ export const getUrlData = () => {
     dataObj[url[0]] = url[1]
   }
   return dataObj
-}
-
-/**
- * @Description: 默认重定向路由
- * @param {any} push
- * @return {*}
- */
-export const pageRedirect = async (push: any) => {
-  const params_data = getUrlData()
-  if (params_data?.path) {
-    push({ path: params_data.path })
-  }
 }
