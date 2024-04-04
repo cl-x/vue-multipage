@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-03 17:53:59
+ * @LastEditTime : 2024-04-04 16:06:14
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/vite.config.ts
  */
@@ -32,13 +32,10 @@ const errorLog = (error) => console.log(chalk.red(`${error}`))
 //获取指定的单页面入口
 const getEnterPages = () => {
   const input_page = {
-    index: path.resolve(__dirname, 'pages/index.html')  //默认入口
+    index: fileURLToPath(new URL('pages/index.html', import.meta.url))  //默认入口
   }
   pages.forEach((item) => {
-    input_page[item.chunk] = path.resolve(
-      __dirname,
-      `pages/${item.chunk}.html`
-    )
+    input_page[item.chunk] = fileURLToPath(new URL(`pages/${item.chunk}.html`, import.meta.url))
   })
 
   return input_page
@@ -46,19 +43,21 @@ const getEnterPages = () => {
 
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   let env = {} as any
+  let dropArr = [] as any
   const root: any = process.cwd()
   const isBuild = command === 'build'
   if (!isBuild) {
-    env = loadEnv((process.argv[2]), root)
+    env = loadEnv((process.argv[3] === '--mode' ? process.argv[4] : process.argv[3]), root)
   } else {
     env = loadEnv(mode, root)
   }
 
+  if (env.VITE_DROP_DEBUGGER === 'true') dropArr.push('debugger')
+  if (env.VITE_DROP_CONSOLE === 'true') dropArr.push('console')
+
   return {
-    // root: path.resolve(__dirname, `./src/pages/${NPM_CONFIG_PAGE}`),
-    root: path.resolve(__dirname, `./pages`),
-    // base: '/',
-    base: 'https://web3.realtech-inc.com/silk/vue-test-two/',
+    root: fileURLToPath(new URL('./pages', import.meta.url)),
+    base: env.VITE_BASE_PATH,
     envDir: path.resolve(__dirname), //用于加载 .env 文件的目录。可以是一个绝对路径，也可以是相对于项目根的路径。
     plugins: [
       vue(),
@@ -68,12 +67,12 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
       }),
       autoImport({
         imports: ['vue', 'vue-router', 'pinia'],
-        dts: path.resolve(__dirname, './auto-import.d.ts'),
+        dts: fileURLToPath(new URL('./auto-import.d.ts', import.meta.url)),
         eslintrc: {
           // 已存在文件设置默认 false，需要更新时再打开，防止每次更新都重新生成
           enabled: false,
           // 生成文件地址和名称
-          filepath: path.resolve(__dirname, './.eslintrc-auto-import.json'),
+          filepath: fileURLToPath(new URL('./.eslintrc-auto-import.json', import.meta.url)),
           globalsPropValue: true
         }
       }),
@@ -95,11 +94,13 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./', import.meta.url)),
-        // '@pages': fileURLToPath(new URL('./src/pages', import.meta.url))
       }
     },
+    esbuild: {
+      drop: dropArr,
+    },
     build: {
-      outDir: path.resolve(__dirname, `dist/${NPM_CONFIG_PAGE}`), // 指定输出路径
+      outDir: fileURLToPath(new URL(env.VITE_OUT_DIR || 'dist', import.meta.url)), // 指定输出路径
       assetsInlineLimit: 4096, //小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求
       emptyOutDir: true, //Vite 会在构建时清空该目录
       sourcemap: 'inline',
