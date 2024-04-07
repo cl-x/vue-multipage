@@ -16,10 +16,14 @@
     "preview": "vite preview",
     "test:unit": "vitest",
     "type-check": "vue-tsc --build --force",
+    "ts:check": "vue-tsc --noEmit",
+
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
-    "lint:script": "eslint --fix --ext .js --ext .ts --ext .vue src/",
+    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
+    "lint:script": "eslint --fix --ext .js --ext .ts --ext .vue pages/",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-    "lint:prettierrc": "prettier --write ."
+    "lint:prettierrc": "prettier --write .",
+    "format": "prettier --write pages/"
   },
   "dependencies": {
     "@commitlint/cli": "^19.2.1",
