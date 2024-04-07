@@ -12,7 +12,7 @@
     "resolveJsonModule": true, //允许导入扩展名为“.json”的模块
     "isolatedModules": true, //确保每个文件都可以在不依赖其他导入的情况下安全地进行传输
     "esModuleInterop": true, //支持导入 CommonJs 模块
-    "lib": ["esnext", "dom", "ES2015"], //TS需要引用的库，即声明文件，es5 默认引用dom、es5、scripthost,如需要使用es的高级版本特性，通常都需要配置，如es8的数组新特性需要引入"ES2019.Array",
+    "lib": ["esnext", "dom", "ES2021"], //TS需要引用的库，即声明文件，es5 默认引用dom、es5、scripthost,如需要使用es的高级版本特性，通常都需要配置，如es8的数组新特性需要引入"ES2019.Array",
     // "noLib": false, //不包含默认的库文件（ lib.d.ts）
     "skipLibCheck": true, //忽略所有的声明文件（ *.d.ts）的类型检查
     "allowJs": true, // 允许编译器编译JS，JSX文件
@@ -50,6 +50,7 @@
     "scripts/templateTs/main.ts",
     "./vite-env.d.ts",
     "types/*.d.ts",
+    "./*.ts",
   ],
   "exclude": ["vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-04 16:06:14
+ * @LastEditTime : 2024-04-07 10:37:30
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/vite.config.ts
  */
@@ -17,29 +17,7 @@ import autoImport from 'unplugin-auto-import/vite'
 import { visualizer } from 'rollup-plugin-visualizer' //打包size分析工具
 import compression from 'vite-plugin-compression' //gzip/br 压缩
 import path from 'path'
-import chalk from 'chalk'
-
-
-// 引入多页面配置文件
-const pages = require('./scripts/multiPages.json')
-
-// 获取npm run dev后缀 配置的环境变量
-const NPM_CONFIG_PAGE: string = process.env.npm_config_page || ''
-
-// 命令行报错提示
-const errorLog = (error) => console.log(chalk.red(`${error}`))
-
-//获取指定的单页面入口
-const getEnterPages = () => {
-  const input_page = {
-    index: fileURLToPath(new URL('pages/index.html', import.meta.url))  //默认入口
-  }
-  pages.forEach((item) => {
-    input_page[item.chunk] = fileURLToPath(new URL(`pages/${item.chunk}.html`, import.meta.url))
-  })
-
-  return input_page
-}
+import { getEnterPages } from './buildConfig'
 
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   let env = {} as any
