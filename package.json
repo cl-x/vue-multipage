@@ -22,7 +22,8 @@
     "lint:eslint": "eslint --fix --ext .js --ext .ts --ext .vue ./pages",
     "lint:style": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:format": "prettier --write --loglevel warn \"pages/**/*.{js,ts,json,tsx,css,less,vue,html,md}\"",
-    "lint:prettierrc": "prettier --write ."
+    "lint:prettierrc": "prettier --write .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@commitlint/cli": "^17.2.0",

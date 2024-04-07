@@ -1,8 +1,16 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+###
+ # @Author       : 桔子
+ # @Date         : 2023-11-11 17:57:16
+ # @LastEditors  : 桔子
+ # @LastEditTime : 2024-04-07 13:39:23
+ # @Description  : 头部注释配置模板
+ # @FilePath     : /vue-multipage/.husky/pre-commit
+### 
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
 [ -n "$CI" ] && exit 0
 
 # Format and submit code according to lintstagedrc.js configuration
-npm run ts:check
-npm run lint:lint-staged
+pnpm run ts:check
+pnpm run lint:lint-staged
