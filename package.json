@@ -9,17 +9,17 @@
     "dev:pro": "vite --mode pro",
     "build": "run-p \"build-only {@}\" --",
     "build:check": "run-p type-check \"build-only {@}\" --",
-    "new:page": "node ./scripts/index.mjs --ts",
-    "preview": "vite preview",
-    "test:unit": "vitest",
     "build-only": "vite build",
     "build-only:dev": "vite build --mode dev",
+    "new:page": "node ./scripts/index.mjs --ts",
+
+    "preview": "vite preview",
+    "test:unit": "vitest",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "lint:script": "eslint --fix --ext .js --ext .ts --ext .vue src/",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-    "lint:prettierrc": "prettier --write .",
-    "format": "prettier --write src/"
+    "lint:prettierrc": "prettier --write ."
   },
   "dependencies": {
     "@commitlint/cli": "^19.2.1",
@@ -72,12 +72,5 @@
     "vite-plugin-compression": "^0.5.1",
     "vitest": "^1.4.0",
     "vue-tsc": "^2.0.6"
-  },
-  "lint-staged": {
-    "src/**/*.{js,ts,vue}": [
-      "pnpm run lint:script",
-      "pnpm run lint:prettierrc",
-      "git add ."
-    ]
   }
 }
