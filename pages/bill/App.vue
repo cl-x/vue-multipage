@@ -2,17 +2,14 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-04 14:55:08
+ * @LastEditTime : 2024-04-07 14:39:10
  * @Description  : 头部注释配置模板
- * @FilePath     : /vue-multipage/scripts/templateTs/App.vue
+ * @FilePath     : /vue-multipage/pages/bill/App.vue
 -->
-<script setup lang="ts">
-import { onMounted, nextTick } from 'vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <RouterView />
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

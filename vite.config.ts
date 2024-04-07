@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-07 10:37:30
+ * @LastEditTime : 2024-04-07 15:03:26
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/vite.config.ts
  */
@@ -25,7 +25,10 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   const root: any = process.cwd()
   const isBuild = command === 'build'
   if (!isBuild) {
-    env = loadEnv((process.argv[3] === '--mode' ? process.argv[4] : process.argv[3]), root)
+    env = loadEnv(
+      process.argv[3] === '--mode' ? process.argv[4] : process.argv[3],
+      root
+    )
   } else {
     env = loadEnv(mode, root)
   }
@@ -50,7 +53,9 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
           // 已存在文件设置默认 false，需要更新时再打开，防止每次更新都重新生成
           enabled: false,
           // 生成文件地址和名称
-          filepath: fileURLToPath(new URL('./.eslintrc-auto-import.json', import.meta.url)),
+          filepath: fileURLToPath(
+            new URL('./.eslintrc-auto-import.json', import.meta.url)
+          ),
           globalsPropValue: true
         }
       }),
@@ -71,14 +76,16 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     ],
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./', import.meta.url)),
+        '@': fileURLToPath(new URL('./', import.meta.url))
       }
     },
     esbuild: {
-      drop: dropArr,
+      drop: dropArr
     },
     build: {
-      outDir: fileURLToPath(new URL(env.VITE_OUT_DIR || 'dist', import.meta.url)), // 指定输出路径
+      outDir: fileURLToPath(
+        new URL(env.VITE_OUT_DIR || 'dist', import.meta.url)
+      ), // 指定输出路径
       assetsInlineLimit: 4096, //小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求
       emptyOutDir: true, //Vite 会在构建时清空该目录
       sourcemap: 'inline',
@@ -119,7 +126,3 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     }
   }
 })
-
-
-
-

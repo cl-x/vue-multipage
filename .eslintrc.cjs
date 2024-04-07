@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-04-07 11:00:10
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-07 13:52:47
+ * @LastEditTime : 2024-04-07 15:11:57
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/.eslintrc.cjs
  */
@@ -16,6 +16,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:vue/vue3-essential",
     "plugin:@typescript-eslint/recommended",
+    "./.eslintrc-auto-import.json",
   ],
   overrides: [],
   parser: "vue-eslint-parser",
