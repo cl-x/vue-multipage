@@ -2,12 +2,13 @@
  # @Author       : 桔子
  # @Date         : 2023-11-11 17:57:16
  # @LastEditors  : 桔子
- # @LastEditTime : 2024-04-07 13:39:23
+ # @LastEditTime : 2024-04-07 13:46:58
  # @Description  : 头部注释配置模板
  # @FilePath     : /vue-multipage/.husky/pre-commit
 ### 
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
+echo "husk执行"
 
 [ -n "$CI" ] && exit 0
 
