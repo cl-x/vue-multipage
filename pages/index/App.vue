@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-07 15:00:06
+ * @LastEditTime : 2024-04-07 15:18:26
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/pages/index/App.vue
 -->
@@ -48,10 +48,23 @@ init()
 
 <template>
   <div>
-    <h1 v-for="(item, index) in page_list" :key="index" @click="onPush(item)">
+    <h1
+      class="h1-text"
+      v-for="(item, index) in page_list"
+      :key="index"
+      @click="onPush(item)"
+    >
       {{ item.chunkName }}
     </h1>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.h1-text {
+  color: #ccc;
+  cursor: pointer;
+  margin: 10px;
+  font-size: 14px;
+  line-height: 16px;
+}
+</style>
