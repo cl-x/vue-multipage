@@ -2,15 +2,15 @@
  * @Author       : 桔子
  * @Date         : 2023-11-22 13:18:11
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-03-27 20:25:10
+ * @LastEditTime : 2024-04-07 14:02:01
  * @Description  : marketingModules
- * @FilePath     : /vue-multipage/src/stores/modules/common.ts
+ * @FilePath     : /vue-multipage/stores/modules/common.ts
  */
 import { defineStore } from 'pinia'
 import { store } from '../index'
 
 interface CommonState {
-  name: ''
+  name: any
 }
 
 export const useCommonModulesStore = defineStore('commonModules', {
@@ -20,15 +20,13 @@ export const useCommonModulesStore = defineStore('commonModules', {
     }
   },
   getters: {
-    getName() {
+    getName(): any {
       return this.name
     }
   },
   actions: {
     setName(name: any) {
-      
       this.name = name
-      console.log(this.name, '---name')
     }
   }
 })

@@ -1,7 +1,15 @@
+/*
+ * @Author       : 桔子
+ * @Date         : 2024-04-07 11:09:15
+ * @LastEditors  : 桔子
+ * @LastEditTime : 2024-04-07 13:58:28
+ * @Description  : 头部注释配置模板
+ * @FilePath     : /vue-multipage/hooks/event/useScrollTo.ts
+ */
 import { ref, unref } from 'vue'
 
 export interface ScrollToParams {
-  el: HTMLElement
+  el: any
   to: number
   position: string
   duration?: number
@@ -16,7 +24,7 @@ const easeInOutQuad = (t: number, b: number, c: number, d: number) => {
   t--
   return (-c / 2) * (t * (t - 2) - 1) + b
 }
-const move = (el: HTMLElement, position: string, amount: number) => {
+const move = (el: any, position: string, amount: number) => {
   el[position] = amount
 }
 
@@ -28,7 +36,7 @@ export function useScrollTo({
   callback
 }: ScrollToParams) {
   const isActiveRef = ref(false)
-  const start = el[position]
+  const start: any = el[position]
   const change = to - start
   const increment = 20
   let currentTime = 0

@@ -21,6 +21,8 @@
         "@/stores/*": ["./stores/*"],
         "@/styles": ["./styles"],
         "@/styles/*": ["./styles/*"],
+        "@/types": ["./types"],
+        "@/types/*": ["./types/*"],
         "@/utils": ["./utils"],
         "@/utils/*": ["./utils/*"],
       }

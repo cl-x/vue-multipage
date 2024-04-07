@@ -1,7 +1,18 @@
+/*
+ * @Author       : 桔子
+ * @Date         : 2024-04-07 11:09:15
+ * @LastEditors  : 桔子
+ * @LastEditTime : 2024-04-07 13:59:42
+ * @Description  : 头部注释配置模板
+ * @FilePath     : /vue-multipage/hooks/web/useWatermark.ts
+ */
 const domSymbol = Symbol('watermark-dom')
 
-export function useWatermark(op = 0.15, appendEl: HTMLElement | null = document.body) {
-  let func: Fn = () => {}
+export function useWatermark(
+  op = 0.15,
+  appendEl: HTMLElement | null = document.body
+) {
+  let func: any = () => {}
   const id = domSymbol.toString()
   const clear = () => {
     const domId = document.getElementById(id)
@@ -37,7 +48,8 @@ export function useWatermark(op = 0.15, appendEl: HTMLElement | null = document.
     div.style.zIndex = '100000000'
     div.style.width = document.documentElement.clientWidth + 'px'
     div.style.height = document.documentElement.clientHeight + 'px'
-    div.style.background = 'url(' + can.toDataURL('image/png') + ') left top repeat'
+    div.style.background =
+      'url(' + can.toDataURL('image/png') + ') left top repeat'
     const el = appendEl
     el && el.appendChild(div)
     return id

@@ -34,6 +34,8 @@
       "@/stores/*": ["./stores/*"],
       "@/styles": ["./styles"],
       "@/styles/*": ["./styles/*"],
+      "@/types": ["./types"],
+      "@/types/*": ["./types/*"],
       "@/utils": ["./utils"],
       "@/utils/*": ["./utils/*"],
     }
@@ -52,6 +54,6 @@
     "types/*.d.ts",
     "./*.ts",
   ],
-  "exclude": ["vite.config.ts"],
+  "exclude": ["vite.config.ts", "vitest.config.ts", "buildConfig.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
