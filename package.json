@@ -12,6 +12,7 @@
     "build-only": "vite build",
     "build-only:dev": "vite build --mode dev",
     "new:page": "node ./scripts/index.mjs --ts",
+    "delete:page": "node ./scripts/deletePage.mjs --ts",
     "preview": "vite preview",
     "test:unit": "vitest",
     "type-check": "vue-tsc --build --force",

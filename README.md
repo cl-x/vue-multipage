@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-04-02 17:04:05
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-08 16:25:03
+ * @LastEditTime : 2024-04-08 17:33:15
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/README.md
 -->
@@ -43,6 +43,10 @@ pnpm run new:page，这是创建新的页面命令
 除此之外删除页面，不仅仅要删除该页面文件夹，比如bill文件夹，还要删除bill.html,还有在scripts文件夹下的multiPages.json，找到对应的bill, 删除即可，这里是检测是否重复的页面名的，如果不删除，下次想再次创建bill页面，会提示已存在
 
 关于删除确实目前有点麻烦，后期我会在写个脚本命令，去删除
+
+pnpm run delete:page 执行删除页面脚本命令
+
+执行后输入页面名，比如bill页面，执行命令后则输入bill，即可删除
 
 pnpm run build 这里是默认全部打包所有页面
 

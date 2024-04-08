@@ -1,3 +1,11 @@
+/*
+ * @Author       : 桔子
+ * @Date         : 2024-04-08 16:29:27
+ * @LastEditors  : 桔子
+ * @LastEditTime : 2024-04-08 16:50:00
+ * @Description  : 此文件为创建页面的脚本命令文件
+ * @FilePath     : /vue-multipage/scripts/index.mjs
+ */
 import chalk from 'chalk'
 import path from 'path'
 import fs from 'fs'
@@ -20,7 +28,7 @@ process.stdin.on('data', async (chunk) => {
   const inputName = content.split(':')[0]
   const inputDesc = content.split(':')[1] || inputName
   const isTs = process.env.npm_config_ts
-  successLog(`将在 /pages 目录下创建 ${inputName} 文件夹`)
+  successLog(`将在 /pages 目录下创建 ${inputName} 文件夹以及${inputName}.html文件`)
   const targetPath = resolve('./pages', inputName)
   const targetEnterPath = resolve('./pages', `${inputName}.html`)
   // 判断同名文件夹是否存在
@@ -83,7 +91,7 @@ process.stdin.on('data', async (chunk) => {
 
   /**
    * @Description: 改变底层入口html的数据
-   * @param {*} data_list 新页面的数据
+   * @param {*} data_list 新的页面数据
    * @return {*}
    */
   const changePagesData = async (data_list) => {
