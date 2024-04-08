@@ -2,7 +2,7 @@
  # @Author       : 桔子
  # @Date         : 2024-04-04 10:44:03
  # @LastEditors  : 桔子
- # @LastEditTime : 2024-04-04 10:54:55
+ # @LastEditTime : 2024-04-08 17:51:10
  # @Description  : 头部注释配置模板
  # @FilePath     : /vue-multipage/.env.pro
 ### 
@@ -13,7 +13,7 @@ NODE_ENV=production
 VITE_API_BASEPATH=pro
 
 # 打包路径
-VITE_BASE_PATH='https://web3.realtech-inc.com/silk/vue-test-two/'
+VITE_BASE_PATH='https://xxxx.com/xxx/xx/'
 
 # 是否删除debugger
 VITE_DROP_DEBUGGER=false
