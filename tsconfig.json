@@ -18,7 +18,7 @@
     "allowJs": true, // 允许编译器编译JS，JSX文件
     "noEmit": true, // 不输出文件,即编译后不会生成任何js文件
     "allowSyntheticDefaultImports": true, //允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。默认值：module === "system" 或设置了 --esModuleInterop 且 module 不为 es2015 / esnext
-    "baseUrl": ".", //基本目录来解析非绝对模块名
+    "baseUrl": "./", //基本目录来解析非绝对模块名
     "paths": {
       "@/components": ["./components"],
       "@/components/*": ["./components/*"],
@@ -53,6 +53,7 @@
     "./vite-env.d.ts",
     "types/*.d.ts",
     "./*.ts",
+    "./auto-import.d.ts",
   ],
   "exclude": ["vite.config.ts", "vitest.config.ts", "buildConfig.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

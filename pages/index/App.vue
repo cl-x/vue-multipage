@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-07 15:18:26
+ * @LastEditTime : 2024-04-08 16:06:58
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/pages/index/App.vue
 -->
@@ -56,6 +56,8 @@ init()
     >
       {{ item.chunkName }}
     </h1>
+
+    <SvgIcon name="demo" class_name="svg-app-icon" />
   </div>
 </template>
 
@@ -66,5 +68,12 @@ init()
   margin: 10px;
   font-size: 14px;
   line-height: 16px;
+}
+
+.svg-app-icon {
+  width: 20px !important;
+  height: 20px !important;
+  fill: #000;
+  cursor: pointer;
 }
 </style>

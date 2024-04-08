@@ -4,7 +4,7 @@
       "module": "esnext",
       "moduleResolution": "node",
       "allowSyntheticDefaultImports": true,
-      "baseUrl": ".",
+      "baseUrl": "./",
       "allowJs": true, // 允许编译器编译JS，JSX文件
       "paths": {
         "@/components": ["./components"],
@@ -27,5 +27,5 @@
         "@/utils/*": ["./utils/*"],
       }
     },
-    "include": ["vite.config.ts", "./*.ts"],
+    "include": ["vite.config.ts", "./*.ts", "./auto-import.d.ts",],
   } 

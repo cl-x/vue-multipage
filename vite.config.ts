@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-07 15:03:26
+ * @LastEditTime : 2024-04-08 16:01:45
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/vite.config.ts
  */
@@ -18,6 +18,7 @@ import { visualizer } from 'rollup-plugin-visualizer' //打包size分析工具
 import compression from 'vite-plugin-compression' //gzip/br 压缩
 import path from 'path'
 import { getEnterPages } from './buildConfig'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   let env = {} as any
@@ -58,6 +59,12 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
           ),
           globalsPropValue: true
         }
+      }),
+      createSvgIconsPlugin({
+        // 指定要缓存的文件夹
+        iconDirs: [path.resolve(process.cwd(), 'icons/svg')],
+        // 指定svmbolId格式
+        symbolId: '[name]'
       }),
       visualizer(),
       // gzip格式
