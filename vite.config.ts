@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-08 16:01:45
+ * @LastEditTime : 2024-04-09 10:35:37
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/vite.config.ts
  */
@@ -11,7 +11,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import Components from 'unplugin-vue-components/vite' //组件自动按需引入
+import components from 'unplugin-vue-components/vite' //组件自动按需引入
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import autoImport from 'unplugin-auto-import/vite'
 import { visualizer } from 'rollup-plugin-visualizer' //打包size分析工具
@@ -44,7 +44,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     plugins: [
       vue(),
       vueJsx(),
-      Components({
+      components({
         resolvers: [VantResolver()]
       }),
       autoImport({
