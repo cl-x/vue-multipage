@@ -2,7 +2,7 @@
  * @Author       : 桔子
  * @Date         : 2024-03-25 17:27:09
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-08 16:06:58
+ * @LastEditTime : 2024-04-19 09:57:16
  * @Description  : 头部注释配置模板
  * @FilePath     : /vue-multipage/pages/index/App.vue
 -->
@@ -29,6 +29,10 @@ const getAllPages = async () => {
 
     if (index === 3) {
       item.type = JumpType.BILL_HOME
+    }
+
+    if (index === 4) {
+      item.type = JumpType.SCSS_HOME
     }
   })
 

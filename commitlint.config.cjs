@@ -1,3 +1,11 @@
+/*
+ * @Author       : 桔子
+ * @Date         : 2024-04-07 14:33:36
+ * @LastEditors  : 桔子
+ * @LastEditTime : 2024-04-19 18:43:03
+ * @Description  : 头部注释配置模板
+ * @FilePath     : /vue-multipage/commitlint.config.cjs
+ */
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
@@ -21,7 +29,8 @@ module.exports = {
         'types', // 类型修改
         'release', // 版本发布
         'merge', // 合并代码
-        'profile' // 代码性能优化
+        'profile', // 代码性能优化
+        'add' // 添加功能
       ]
     ],
     'subject-full-stop': [0, 'never'],
