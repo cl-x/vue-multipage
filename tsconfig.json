@@ -38,6 +38,8 @@
       "@/types/*": ["./types/*"],
       "@/utils": ["./utils"],
       "@/utils/*": ["./utils/*"],
+      "@/worker": ["./worker"],
+      "@/worker/*": ["./worker/*"],
     }
   },
   "include": [
