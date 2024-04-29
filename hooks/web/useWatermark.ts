@@ -2,8 +2,8 @@
  * @Author       : 桔子
  * @Date         : 2024-04-07 11:09:15
  * @LastEditors  : 桔子
- * @LastEditTime : 2024-04-07 13:59:42
- * @Description  : 头部注释配置模板
+ * @LastEditTime : 2024-04-29 16:34:25
+ * @Description  : 水印hooks
  * @FilePath     : /vue-multipage/hooks/web/useWatermark.ts
  */
 const domSymbol = Symbol('watermark-dom')
